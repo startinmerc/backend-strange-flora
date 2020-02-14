@@ -1,26 +1,35 @@
-const PORT = 8081;
+// ==================Env Variables==================
 
+const PORT = 8081;
 require("dotenv").config();
+
+// ==================Dependencies==================
+
 const express = require("express");
 const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const errorHandler = require("./handlers/error");
 
-// Express Config
+// =================Express Config=================
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-// Error Handler
+// =================Error Handlers=================
+
 app.use((req,res,next)=>{
 	let err = new Error("Not Found");
 	err.status = 404;
 	next(err);
 });
 
-// Start App
 app.use(errorHandler);
+
+
+// ===================Start App===================
+
 app.listen(PORT, function(){
 	console.log(`Server running on port ${PORT}`);
 });
