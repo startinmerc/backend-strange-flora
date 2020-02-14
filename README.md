@@ -51,4 +51,5 @@ API development is tested during development using Postman.
 #### Reviews
 * Link Users and Reviews
 * Include in `models/index`
-
+* Include in `index.js`
+* Add routes
