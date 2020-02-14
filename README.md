@@ -47,3 +47,8 @@ API development is tested during development using Postman.
 #### Auth Handlers 2
 * Add signin handler
 * Include in routes
+
+#### Reviews
+* Link Users and Reviews
+* Include in `models/index`
+
