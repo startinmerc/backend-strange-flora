@@ -28,6 +28,6 @@ const landingSectionSchema = new mongoose.Schema({
 	}
 });
 
-const LandingSection = mongoose.Model("LandingSection", landingSectionSchema);
+const LandingSection = mongoose.model("LandingSection", landingSectionSchema);
 
 module.exports = LandingSection;
