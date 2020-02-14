@@ -63,3 +63,22 @@ API development is tested during development using Postman.
 * check user id of request matches user logged in
 * Include middleware in app
 * Pass to reviews routes
+
+---
+
+## To Do:
+
+#### Category
+*needs get all*
+* Handlers
+* Routes
+
+#### Product
+*needs get all*
+* Handlers
+* Routes
+
+#### landingSection
+*needs get all*
+* Handlers
+* Routes
