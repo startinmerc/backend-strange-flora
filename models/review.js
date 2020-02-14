@@ -20,6 +20,23 @@ const reviewSchema = new mongoose.Schema({
 	}
 });
 
+// Remove review from user's reviews schema
+reviewSchema.pre("remove", async function(next){
+	try {
+		// find user by Id
+		let user = await User.findById(this.userId);
+		// remove review from user's reviews array
+		user.reviews.remove(this.id);
+		// wait for db to save
+		await user.save();
+		// on you go
+		return next();
+	// Or catch error
+	} catch(err) {
+		return next(err);
+	};
+});
+
 const Review = mongoose.model("Review", reviewSchema);
 
 module.exports = Review;
