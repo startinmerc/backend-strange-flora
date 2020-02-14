@@ -33,3 +33,5 @@ The backend API for Strange Flora, a React eCommerce site.
 * Add all basic schemas based on [frontend seeds](https://github.com/startinmerc/strange-flora/blob/master/src/seeds.js)
 
 #### User Schema Auth
+* Add preSave bcrypt to encrypt password
+* Add comparePassword to check correct password
