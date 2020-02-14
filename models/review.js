@@ -4,11 +4,13 @@ const User = require("./user");
 const reviewSchema = new mongoose.Schema({
 	title: {
 		type: String,
-		required: true,
+		required: true
 	},
 	score: {
 		type: Number,
 		required: true,
+		min: 1,
+		max: 5
 	},
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
@@ -16,7 +18,7 @@ const reviewSchema = new mongoose.Schema({
 	},
 	content: {
 		type: String,
-		required: true,
+		required: true
 	}
 });
 
