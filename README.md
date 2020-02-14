@@ -35,3 +35,9 @@ The backend API for Strange Flora, a React eCommerce site.
 #### User Schema Auth
 * Add preSave bcrypt to encrypt password
 * Add comparePassword to check correct password
+
+#### Auth Handlers
+* Add .env
+* Async signup
+* Signup JWT
+* Handle validation error
