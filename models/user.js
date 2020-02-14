@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	reviews: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "Review"
+	}]
 });
 
 // Before User is saved
