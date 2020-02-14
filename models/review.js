@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const User = require("./user");
 
 const reviewSchema = new mongoose.Schema({
 	title: {
@@ -9,9 +10,9 @@ const reviewSchema = new mongoose.Schema({
 		type: Number,
 		required: true,
 	},
-	author: {
+	user: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: "Author"
+		ref: "User"
 	},
 	content: {
 		type: String,
