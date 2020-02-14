@@ -20,6 +20,7 @@ app.use((req,res,next)=>{
 });
 
 // Start App
+app.use(errorHandler);
 app.listen(PORT, function(){
 	console.log(`Server running on port ${PORT}`);
 });
