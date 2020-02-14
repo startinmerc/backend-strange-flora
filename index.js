@@ -11,7 +11,9 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const errorHandler = require("./handlers/error");
 
+// ===================Middleware===================
 
+const { loginRequired, ensureCorrectUser } = require("./middleware/auth");
 
 // =================Express Config=================
 
@@ -27,7 +29,12 @@ app.use("/api/auth", authRoutes);
 // ==================Review Routes==================
 
 const reviewRoutes = require("./routes/reviews");
-app.use("/api/users/:id/reviews", reviewRoutes);
+app.use(
+	"/api/users/:id/reviews",
+	loginRequired,
+	ensureCorrectUser,
+	 reviewRoutes
+ );
 
 // =================Error Handlers=================
 

@@ -53,3 +53,13 @@ API development is tested during development using Postman.
 * Include in `models/index`
 * Include in `index.js`
 * Add routes
+
+#### Middleware 1
+* Add loginrequired function
+* Check header token for user logged in
+
+#### Middleware 2
+* Add ensureCorrectUser function
+* check user id of request matches user logged in
+* Include middleware in app
+* Pass to reviews routes
