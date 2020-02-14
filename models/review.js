@@ -24,7 +24,7 @@ const reviewSchema = new mongoose.Schema({
 reviewSchema.pre("remove", async function(next){
 	try {
 		// find user by Id
-		let user = await User.findById(this.userId);
+		let user = await User.findById(this.user);
 		// remove review from user's reviews array
 		user.reviews.remove(this.id);
 		// wait for db to save
