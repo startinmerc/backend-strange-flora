@@ -11,11 +11,18 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const errorHandler = require("./handlers/error");
 
+
+
 // =================Express Config=================
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+// ===================Auth Routes===================
+
+const authRoutes = require("./routes/auth");
+app.use("/api/auth", authRoutes);
 
 // =================Error Handlers=================
 
