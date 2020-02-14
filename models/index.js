@@ -7,6 +7,7 @@ mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
 mongoose.connect("mongodb://localhost/strange-flora", {
-	keepAlive: true,
-	useMongoClient: true
+	keepAlive: true
 });
+
+module.exports.User = require("./user");
