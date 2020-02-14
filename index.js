@@ -24,6 +24,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
 
+// ==================Review Routes==================
+
+const reviewRoutes = require("./routes/reviews");
+app.use("/api/users/:id/reviews", reviewRoutes);
+
 // =================Error Handlers=================
 
 app.use((req,res,next)=>{
