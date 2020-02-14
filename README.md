@@ -41,3 +41,4 @@ The backend API for Strange Flora, a React eCommerce site.
 * Async signup
 * Signup JWT
 * Handle validation error
+* Add signup route
