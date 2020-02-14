@@ -14,6 +14,7 @@
 * Node
 
 The backend API for Strange Flora, a React eCommerce site.
+API development is tested during development using Postman.
 
 ---
 
