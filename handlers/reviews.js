@@ -16,7 +16,7 @@ exports.createReview = async function(req,res,next){
 		// Wait for db to save
 		await foundUser.save();
 		// Add username to review response to save re-looking up
-		let foundReview = await db.Review.findById(review_id).populate("user", {
+		let foundReview = await db.Review.findById(review._id).populate("user", {
 			username: true
 		});
 		// Reply with new review
