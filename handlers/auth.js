@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 exports.signin = async function(req,res,next){
 	try {
 		// Find user in DB
-		let user = db.User.findOne({
+		let user = await db.User.findOne({
 				email: req.body.email
 			});
 		// Assign id & username
