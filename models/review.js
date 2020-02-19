@@ -26,7 +26,7 @@ const reviewSchema = new mongoose.Schema({
 	}
 }, {
 		timestamps: true
-	});
+});
 
 // Remove review from user's reviews schema
 reviewSchema.pre("remove", async function(next){
