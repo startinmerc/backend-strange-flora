@@ -16,3 +16,5 @@ mongoose.connect("mongodb://localhost/strange-flora", {
 module.exports.User = require("./user");
 module.exports.Review = require("./review");
 module.exports.Product = require("./product");
+module.exports.Category = require("./category");
+module.exports.LandingSection = require("./landingSection");
