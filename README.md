@@ -72,18 +72,15 @@ API development is tested during development using Postman.
 * Post, GetAll handlers
 * Post, GetAll routes
 
+#### landingSection
+* Post, GetAll handlers
+* Post, GetAll routes
+
+#### Seed DB
+* Copy seed function from frontend
+* Convert to Mongoose population
+* Include in app
+
 ---
 
 ## To Do:
-
-#### Category
-*needs get all*
-* Handlers
-* Routes
-
-
-
-#### landingSection
-*needs get all*
-* Handlers
-* Routes
