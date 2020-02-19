@@ -16,11 +16,17 @@ const reviewSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "User"
 	},
+	product: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "Product"
+	},
 	content: {
 		type: String,
 		required: true
 	}
-});
+}, {
+		timestamps: true
+	});
 
 // Remove review from user's reviews schema
 reviewSchema.pre("remove", async function(next){
@@ -31,6 +37,11 @@ reviewSchema.pre("remove", async function(next){
 		user.reviews.remove(this.id);
 		// wait for db to save
 		await user.save();
+
+		let product = await Product.findById(this.product);
+		product.reviews.remove(this.id);
+		await product.save();
+
 		// on you go
 		return next();
 	// Or catch error
