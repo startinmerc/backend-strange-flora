@@ -15,3 +15,4 @@ mongoose.connect("mongodb://localhost/strange-flora", {
 // Connect schemas
 module.exports.User = require("./user");
 module.exports.Review = require("./review");
+module.exports.Product = require("./product");

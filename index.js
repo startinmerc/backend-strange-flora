@@ -36,6 +36,11 @@ app.use(
 	 reviewRoutes
  );
 
+// =================Product Routes=================
+
+const productRoutes = require("./routes/products");
+app.use("/api/products", productRoutes);
+
 // =================Error Handlers=================
 
 app.use((req,res,next)=>{
