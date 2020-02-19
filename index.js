@@ -46,6 +46,11 @@ app.use("/api/products", productRoutes);
 const categoryRoutes = require("./routes/categories");
 app.use("/api/categories", categoryRoutes);
 
+// ==============LandingSection Routes==============
+
+const landingSectionRoutes = require("./routes/landingSections");
+app.use("/api/landingSections", landingSectionRoutes);
+
 // =================Error Handlers=================
 
 app.use((req,res,next)=>{
