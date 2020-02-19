@@ -7,18 +7,29 @@ exports.createReview = async function(req,res,next){
 			title: req.body.title,
 			score: req.body.score,
 			content: req.body.content,
-			user: req.params.id
+			user: req.params.id,
+			product: req.params.product
 		});
+
 		// Find author by id
 		let foundUser = await db.User.findById(req.params.id);
 		// Add review to author's reviews array
 		foundUser.reviews.push(review.id);
 		// Wait for db to save
 		await foundUser.save();
-		// Add username to review response to save re-looking up
-		let foundReview = await db.Review.findById(review._id).populate("user", {
-			username: true
-		});
+
+		// Find product by id
+		let foundProduct = await db.Product.findById(req.params.product);
+		// Add review to author's reviews array
+		foundProduct.reviews.push(review.id);
+		// Wait for db to save
+		await foundProduct.save();
+		
+		// Add username + prod to review response to save re-looking up
+		let foundReview = await db.Review.findById(review._id)
+		.populate("user", {username: true})
+		.populate("product", {name: true});
+
 		// Reply with new review
 		return res.status(200).json(foundReview);
 	// Catch errors
