@@ -64,6 +64,14 @@ API development is tested during development using Postman.
 * Include middleware in app
 * Pass to reviews routes
 
+#### Product
+* Post, GetAll handlers
+* Post, GetAll routes
+
+#### Category
+* Post, GetAll handlers
+* Post, GetAll routes
+
 ---
 
 ## To Do:
@@ -73,10 +81,7 @@ API development is tested during development using Postman.
 * Handlers
 * Routes
 
-#### Product
-*needs get all*
-* Handlers
-* Routes
+
 
 #### landingSection
 *needs get all*
