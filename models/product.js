@@ -13,10 +13,6 @@ const productSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	reviews: {
-		type: Array,
-		required: false
-	},
 	price: {
 		type: String,
 		required: true
@@ -28,7 +24,11 @@ const productSchema = new mongoose.Schema({
 	stock: {
 		type: Number,
 		required: true
-	}
+	},
+	reviews: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "Review"
+	}]
 });
 
 const Product = mongoose.model("Product", productSchema);
