@@ -22,6 +22,15 @@ exports.createProduct = async function(req,res,next){
 	}
 };
 
+exports.getAllProducts = async function(req,res,next){
+	try {
+		let products = await db.Product.find();
+		return res.status(200).json(products);
+	} catch(err) {
+		return next(err);
+	}
+};
+
 exports.getProduct = async function(req,res,next){
 	try {
 		let product = await db.Product.find(req.params.product_id);

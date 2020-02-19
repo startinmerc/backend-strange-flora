@@ -1,17 +1,9 @@
 const express = require("express");
 const router = express.Router({mergeParams: true});
-const db = require("../models");
 
-const { createProduct, getProduct } = require("../handlers/products");
+const { createProduct, getProduct, getAllProducts } = require("../handlers/products");
 
-router.route("/all").get(async function(req,res,next){
-	try {
-		let products = await db.Products.find()
-		return res.status(200).json(products);
-	} catch(err) {
-		return next(err);
-	}
-});
+router.route("/all").get(getAllProducts);
 
 router.route("/").post(createProduct);
 
