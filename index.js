@@ -64,8 +64,8 @@ app.use(errorHandler);
 
 // ===================Start App===================
 
-const seedDB = require("./seeds");
-seedDB();
+// const seedDB = require("./seeds");
+// seedDB();
 
 app.listen(PORT, function(){
 	console.log(`Server running on port ${PORT}`);
