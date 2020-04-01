@@ -23,6 +23,8 @@ API development is tested during development using Postman.
 /api/categories/all //view all categories
 /api/categories/:category //view specific category
 /api/categories/:category/products //view all products in category
+
+/api/landingsections/ //get all landingsections
 ```
 
 ---
