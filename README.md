@@ -16,6 +16,15 @@
 The backend API for Strange Flora, a React eCommerce site.
 API development is tested during development using Postman.
 
+```
+/api/products/all //view all products
+/api/products/:id //view specific product
+
+/api/categories/all //view all categories
+/api/categories/:category //view specific category
+/api/categories/:category/products //view all products in category
+```
+
 ---
 
 ### V1.0
@@ -81,6 +90,8 @@ API development is tested during development using Postman.
 * Convert to Mongoose population
 * Include in app
 
----
+#### getCategoryProducts
+* Add route
+* Add handler to return products in specific category
 
-## To Do:
+---
