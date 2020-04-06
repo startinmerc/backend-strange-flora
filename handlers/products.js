@@ -33,7 +33,7 @@ exports.getAllProducts = async function(req,res,next){
 
 exports.getProduct = async function(req,res,next){
 	try {
-		let product = await db.Product.find(req.params.product_id);
+		let product = await db.Product.findById(req.params.product_id);
 		return res.status(200).json(product);
 	} catch(err) {
 		return next(err);
