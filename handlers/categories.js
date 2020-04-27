@@ -21,7 +21,8 @@ exports.createCategory = async function(req,res,next){
 
 exports.getAllCategories = async function(req,res,next){
 	try {
-		let categories = await db.Category.find();
+		let categories = await db.Category.find()
+			.sort({_id:1});
 		return res.status(200).json(categories);
 	} catch(err) {
 		return next(err);
