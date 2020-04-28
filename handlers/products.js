@@ -40,6 +40,26 @@ exports.getProduct = async function(req,res,next){
 	}
 };
 
+exports.getFeaturedProducts = async function(req,res,next){
+	if(req.params.category !== "about"){
+		try {
+			// Get category products
+			let products = await db.Product.find({type: req.params.category});
+			// Filter by featured
+			let featured = products.filter(p => p.featured === true);
+			// Add random prods until featured is 2 prods
+			while(featured.length < 2){
+				featured.push(
+					products[Math.floor(Math.random() * Math.floor(products.length))]
+				)
+			}
+			return res.status(200).json(featured);
+		} catch(err){
+			return next(err)
+		};
+	}
+};
+
 // =========================If remove prehook?=========================
 // 
 // exports.deleteProduct = async function(req,res,next){
