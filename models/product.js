@@ -28,7 +28,11 @@ const productSchema = new mongoose.Schema({
 	reviews: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "Review"
-	}]
+	}],
+	featured: {
+		type: Boolean,
+		default: false
+	}
 });
 
 const Product = mongoose.model("Product", productSchema);
