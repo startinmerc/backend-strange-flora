@@ -96,4 +96,7 @@ API development is tested during development using Postman.
 * Add route
 * Add handler to return products in specific category
 
----
+#### getDeliveries
+* Add delivery option model
+* Add route to get delivery options
+* Add handler to return array of name, price objects
