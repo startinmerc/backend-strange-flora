@@ -18,3 +18,4 @@ module.exports.Review = require("./review");
 module.exports.Product = require("./product");
 module.exports.Category = require("./category");
 module.exports.LandingSection = require("./landingSection");
+module.exports.Delivery = require("./delivery");
