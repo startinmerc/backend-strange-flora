@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Product, Category, LandingSection } = require("./models");
+const { Product, Category, LandingSection, Delivery } = require("./models");
 
 const categories = [
 	{title: 'Mushrooms', section: 'mushroom', color: 'var(--mushroom)'},
@@ -7,6 +7,11 @@ const categories = [
 	{title: 'Flowers', section: 'flower', color: 'var(--flower)'},
 	{title: 'Reductions', section: 'reduction', color: 'var(--reduction)'},
 	{title: 'About Us', section: 'about', color: 'var(--primary)'}
+];
+
+const deliveries = [
+	{title: "Premium", price: 50, description: "Premium tracked delivery service", speed: 1},
+	{title: "Standard", price: 15, description: "Standard untracked delivery service", speed: 5},
 ];
 
 
@@ -34,12 +39,22 @@ function addToLanding(dark,header,copy,image,type,links){
 		type,
 		links
 	});
-}
+};
+
+function addDelivery({title, price, description, speed}){
+	Delivery.create({
+		title,
+		price,
+		description,
+		speed
+	});
+};
 
 function seedDB(){
-	Product.deleteMany({})
-	LandingSection.deleteMany({})
-	Category.deleteMany({})
+	Product.deleteMany({});
+	LandingSection.deleteMany({});
+	Category.deleteMany({});
+	Delivery.deleteMany({});
 
 	categories.forEach((seed)=>{
 		Category.create({
@@ -48,6 +63,10 @@ function seedDB(){
 			color: seed.color
 		});
 	});
+
+	deliveries.forEach(seed=>{
+		addDelivery(seed)
+	})
 
 	for(let i=0;i<40;i++){
 		addProduct(i);
