@@ -100,3 +100,9 @@ API development is tested during development using Postman.
 * Add delivery option model
 * Add route to get delivery options
 * Add handler to return array of name, price objects
+
+#### Type
+* Change type in Product to category id ref
+* Update category model to 'type' for clearer syntax
+* Populate product response type fields
+* Update seeds
