@@ -24,7 +24,7 @@ exports.createProduct = async function(req,res,next){
 
 exports.getAllProducts = async function(req,res,next){
 	try {
-		let products = await db.Product.find();
+		let products = await db.Product.find().populate("type");
 		return res.status(200).json(products);
 	} catch(err) {
 		return next(err);
@@ -33,7 +33,7 @@ exports.getAllProducts = async function(req,res,next){
 
 exports.getProduct = async function(req,res,next){
 	try {
-		let product = await db.Product.findById(req.params.product_id);
+		let product = await db.Product.findById(req.params.product_id).populate("type");
 		return res.status(200).json(product);
 	} catch(err) {
 		return next(err);
@@ -44,7 +44,7 @@ exports.getFeaturedProducts = async function(req,res,next){
 	if(req.params.category !== "about"){
 		try {
 			// Get category products
-			let products = await db.Product.find({type: req.params.category});
+			let products = await db.Product.find({type: req.params.category}).populate("type");
 			// Filter by featured
 			let featured = products.filter(p => p.featured === true);
 			// Add random prods until featured is 2 prods
