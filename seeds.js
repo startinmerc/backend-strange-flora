@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 const { Product, Category, LandingSection, Delivery } = require("./models");
 
 const categories = [
-	{title: 'Mushrooms', section: 'mushroom', color: 'var(--mushroom)'},
-	{title: 'Berries', section: 'berry', color: 'var(--berry)'},
-	{title: 'Flowers', section: 'flower', color: 'var(--flower)'},
-	{title: 'Reductions', section: 'reduction', color: 'var(--reduction)'},
-	{title: 'About Us', section: 'about', color: 'var(--primary)'}
+	{title: 'Mushrooms', type: 'mushroom', color: 'var(--mushroom)', _id: '5ed7e251b77bfa3d4077fa34'},
+	{title: 'Berries', type: 'berry', color: 'var(--berry)', _id: '5ed7e251b77bfa3d4077fa35'},
+	{title: 'Flowers', type: 'flower', color: 'var(--flower)', _id: '5ed7e251b77bfa3d4077fa36'},
+	{title: 'Reductions', type: 'reduction', color: 'var(--reduction)', _id: '5ed7e251b77bfa3d4077fa37'},
+	{title: 'About Us', type: 'about', color: 'var(--primary)', _id: '5ed7e251b77bfa3d4077fa38'}
 ];
 
 const deliveries = [
@@ -17,14 +17,14 @@ const deliveries = [
 
 function addProduct(i){
 	let n = Math.floor(Math.random()*4);
-	let t = categories[n].section
+	let c = categories[n];
 	Product.create({
-		name: `${t} ${i}`,
+		name: `${c.type} ${i}`,
 		photos: [`https://picsum.photos/400?random=${n}`], 
 		description: "description ipsum flooby blup blup, isn't it? yeah.",
 		// reviews: [{title: "Review Title One",score: 2, author: "nick", content: "review content"},{title: "A More Generous Review",score: 5, author: "dave", content: "extended review content lorem description ipsum flooby blup blup, isn't it? yeah. description ipsum flooby blup blup, isn't it? yeah."}],
 		price: Math.floor(Math.random()*99),
-		type: t,
+		type: c._id,
 		stock: Math.floor(Math.random()*20)
 	});
 }
