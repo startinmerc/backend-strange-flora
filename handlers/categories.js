@@ -5,7 +5,7 @@ exports.createCategory = async function(req,res,next){
 		// create Category with supplied data
 		let category = await db.Category.create({
 			title: req.body.title,
-			section: req.body.section,
+			type: req.body.type,
 			color: req.body.color
 		});
 
@@ -31,7 +31,7 @@ exports.getAllCategories = async function(req,res,next){
 
 exports.getCategory = async function(req,res,next){
 	try {
-		let category = await db.Category.find(req.params.category);
+		let category = await db.Category.find(req.params.type);
 		return res.status(200).json(category);
 	} catch(err) {
 		return next(err);
@@ -40,9 +40,9 @@ exports.getCategory = async function(req,res,next){
 
 exports.getCategoryProducts = async function(req,res,next){
 	try {
-		let products = await db.Product.find({type: req.params.category});
+		let products = await db.Product.find({type: req.params.type});
 		if (products.length === 0) {
-			return res.status(404).json(`Category '${req.params.category}' not found`)
+			return res.status(404).json(`Category '${req.params.type}' not found`)
 		} else {
 			return res.status(200).json(products);
 		}
