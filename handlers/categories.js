@@ -40,7 +40,8 @@ exports.getCategory = async function(req,res,next){
 
 exports.getCategoryProducts = async function(req,res,next){
 	try {
-		let products = await db.Product.find({type: req.params.type});
+		let cat = await db.Category.find({type: req.params.type});
+		let products = await db.Product.find({type: cat[0]._id}).populate("type");
 		if (products.length === 0) {
 			return res.status(404).json(`Category '${req.params.type}' not found`)
 		} else {
