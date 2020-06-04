@@ -19,12 +19,15 @@ API development is tested during development using Postman.
 ```
 /api/products/all //view all products
 /api/products/:id //view specific product
+/api/featured/:type_id //get featured products for category
 
 /api/categories/all //view all categories
-/api/categories/:category //view specific category
+/api/categories/:category_id //view specific category
 /api/categories/:category/products //view all products in category
 
 /api/landingsections/ //get all landingsections
+
+/api/deliveries/ //get all delivery options
 ```
 
 ---
@@ -106,3 +109,4 @@ API development is tested during development using Postman.
 * Update category model to 'type' for clearer syntax
 * Populate product response type fields
 * Update seeds
+* Add type lookup to routes which require id/type conversion
