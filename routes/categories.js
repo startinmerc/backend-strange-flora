@@ -6,7 +6,7 @@ const { createCategory, getCategory, getAllCategories, getCategoryProducts } = r
 router.route("/all").get(getAllCategories);
 router.route("/").post(createCategory);
 router.route("/:category").get(getCategory);
-router.route("/:category/products").get(getCategoryProducts);
+router.route("/:type/products").get(getCategoryProducts);
 // router.route("/:review_id").delete(deleteCategory);
 
 module.exports = router;

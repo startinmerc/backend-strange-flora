@@ -5,7 +5,7 @@ const { createProduct, getProduct, getAllProducts, getFeaturedProducts } = requi
 
 router.route("/all").get(getAllProducts);
 router.route("/").post(createProduct);
-router.route("/featured/:category").get(getFeaturedProducts);
+router.route("/featured/:type_id").get(getFeaturedProducts);
 router.route("/:product_id").get(getProduct);
 
 module.exports = router;
