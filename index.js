@@ -1,6 +1,6 @@
 // ==================Env Variables==================
 
-const PORT = 8081;
+const PORT = process.env.PORT || 8081;
 require("dotenv").config();
 
 // ==================Dependencies==================
