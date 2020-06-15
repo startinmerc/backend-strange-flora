@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 const { Product, Category, LandingSection, Delivery } = require("./models");
 
 const categories = [
-	{title: 'Mushrooms', type: 'mushroom', color: 'var(--mushroom)', _id: '5ed7e251b77bfa3d4077fa34'},
-	{title: 'Berries', type: 'berry', color: 'var(--berry)', _id: '5ed7e251b77bfa3d4077fa35'},
-	{title: 'Flowers', type: 'flower', color: 'var(--flower)', _id: '5ed7e251b77bfa3d4077fa36'},
-	{title: 'Reductions', type: 'reduction', color: 'var(--reduction)', _id: '5ed7e251b77bfa3d4077fa37'},
-	{title: 'About Us', type: 'about', color: 'var(--primary)', _id: '5ed7e251b77bfa3d4077fa38'}
+	{title: 'Mushrooms', type: 'mushroom', color: 'var(--mushroom)', _id: '5ee77607640bc622b0e80e08'},
+	{title: 'Berries', type: 'berry', color: 'var(--berry)', _id: '5ee77607640bc622b0e80e09'},
+	{title: 'Flowers', type: 'flower', color: 'var(--flower)', _id: '5ee77607640bc622b0e80e0a'},
+	{title: 'Reductions', type: 'reduction', color: 'var(--reduction)', _id: '5ee77607640bc622b0e80e0b'},
+	{title: 'About Us', type: 'about', color: 'var(--primary)', _id: '5ee77607640bc622b0e80e0c'}
 ];
 
 const deliveries = [
@@ -99,7 +99,7 @@ function seedDB(){
 			categories.forEach((seed)=>{
 				Category.create({
 					title: seed.title,
-					section: seed.section,
+					type: seed.type,
 					color: seed.color
 				});
 			});
