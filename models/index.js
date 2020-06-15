@@ -1,3 +1,6 @@
+// Import .env
+require('dotenv').config();
+
 // Import & config mongoose
 const mongoose = require("mongoose");
 mongoose.set("debug", true);
@@ -8,7 +11,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
-mongoose.connect("mongodb://localhost/strange-flora", {
+mongoose.connect("mongodb+srv://STM:"+process.env.STM+"@cluster0-c9k9l.mongodb.net/strange-flora?retryWrites=true&w=majority" || "mongodb://localhost:27017/strange-flora", {
 	keepAlive: true
 });
 
