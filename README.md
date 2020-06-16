@@ -1,6 +1,8 @@
 # Backend for Strange Flora
 
-## [Live Site](https://strange-flora.herokuapp.com/)
+## [Live Frontend](https://strange-flora.herokuapp.com/)
+
+## [Live API](https://strange-flora-backend.herokuapp.com/)
 
 ## [Frontend Repo](https://github.com/startinmerc/strange-flora)
 
@@ -45,7 +47,7 @@ API development is tested during development using Postman.
 
 #### Model Schemas
 * Create `models/index`
-* Add all basic schemas based on [frontend seeds](https://github.com/startinmerc/strange-flora/blob/master/src/seeds.js)
+* Add all basic schemas based on frontend seeds
 
 #### User Schema Auth
 * Add preSave bcrypt to encrypt password
@@ -110,3 +112,16 @@ API development is tested during development using Postman.
 * Populate product response type fields
 * Update seeds
 * Add type lookup to routes which require id/type conversion
+
+### V2.0
+
+#### Live Heroku Prep
+* Add procfile
+* Change port listener
+* Add url for MongoDB
+* Add dotEnv for MongoDB ID
+
+#### Push Live
+* Add heroku app
+* Link to Github master branch
+* Push live
