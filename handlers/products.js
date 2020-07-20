@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const db = require("../models");
 
 exports.createProduct = async function(req,res,next){
@@ -35,7 +36,12 @@ exports.getProduct = async function(req,res,next){
 	try {
 		let product = await db.Product.findById(req.params.product_id).populate("type");
 		return res.status(200).json(product);
-	} catch(err) {
+	} catch (err) {
+		// If supplied id isn't a valid mongoose id
+		if (!mongoose.isValidObjectId(req.params.product_id)) {
+			// Return 404
+			return res.status(404).json({error: {message: "Must be a valid product ID"}});
+		}
 		return next(err);
 	}
 };
