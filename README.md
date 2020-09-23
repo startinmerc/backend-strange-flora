@@ -147,3 +147,10 @@ API development is tested during development using Postman.
 #### getFeaturedProducts
 
 * Simplify function to add last objects to array instead of random
+
+#### Implement Users
+
+* Add user handlers
+* Add user routes
+* Add personal wishlist & cart arrays to user model
+* Add deleteUser route for testing
