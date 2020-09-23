@@ -10,6 +10,7 @@ mongoose.Promise = Promise;
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
 
 mongoose.connect("mongodb+srv://STM:"+process.env.STM+"@cluster0-c9k9l.mongodb.net/strange-flora?retryWrites=true&w=majority" || "mongodb://localhost:27017/strange-flora", {
 	keepAlive: true
