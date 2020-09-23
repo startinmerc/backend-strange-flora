@@ -56,6 +56,11 @@ app.use("/api/landingSections", landingSectionRoutes);
 const deliveryRoutes = require("./routes/deliveries");
 app.use("/api/deliveries", deliveryRoutes);
 
+// ==============User Routes==============
+
+const userRoutes = require("./routes/users");
+app.use("/api/users", userRoutes);
+
 // =================Error Handlers=================
 
 app.use((req,res,next)=>{
