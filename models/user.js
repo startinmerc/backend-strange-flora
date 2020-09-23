@@ -19,7 +19,15 @@ const userSchema = new mongoose.Schema({
 	reviews: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "Review"
-	}]
+	}],
+	cart: {
+		type: Array,
+		default: []
+	},
+	wish: {
+		type: Array,
+		default: []
+	},
 });
 
 // Before User is saved
