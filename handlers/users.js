@@ -39,3 +39,17 @@ exports.editUser = async function (req, res, next) {
     return next(err);
   }
 };
+
+exports.deleteUser = async function (req,res,next) {
+  try {
+    db.User.findByIdAndRemove(req.params.user_id, function(err, removedUser) {
+      if(err){
+        return next(err)
+      } else {
+        return res.status(200).json(removedUser)
+      }
+    });
+  } catch(err) {
+    return next(err);
+  }
+};

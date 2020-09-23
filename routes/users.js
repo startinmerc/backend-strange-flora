@@ -4,7 +4,8 @@ const router = express.Router({ mergeParams: true });
 const {
   getAllUsers,
   getUser,
-  editUser
+  editUser,
+  deleteUser
 } = require("../handlers/users");
 
 router.route("/")
@@ -12,6 +13,7 @@ router.route("/")
 
 router.route("/:user_id")
   .get(getUser)
-  .put(editUser);
+  .put(editUser)
+  .delete(deleteUser);
 
 module.exports = router;
