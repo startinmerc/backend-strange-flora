@@ -8,7 +8,7 @@ exports.signin = async function (req, res, next) {
 			email: req.body.email
 		});
 		// Deconstruct user data to variables
-		let { id, username } = user;
+		let { id, username, cart, wish } = user;
 		// Check password via middleware
 		let isMatch = await user.comparePassword(req.body.password);
 		// If password correct
@@ -23,6 +23,8 @@ exports.signin = async function (req, res, next) {
 			return res.status(200).json({
 				id,
 				username,
+				cart,
+				wish,
 				token
 			});
 			// Catch errors
