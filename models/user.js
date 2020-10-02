@@ -5,39 +5,41 @@ const userSchema = new mongoose.Schema({
 	email: {
 		type: String,
 		required: true,
-		unique: true
+		unique: true,
 	},
 	username: {
 		type: String,
 		required: true,
-		unique: true
+		unique: true,
 	},
 	password: {
 		type: String,
 		required: true,
 	},
-	reviews: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "Review"
-	}],
+	reviews: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Review",
+		},
+	],
 	cart: {
 		type: Array,
-		default: []
+		default: [],
 	},
 	wish: {
 		type: Array,
-		default: []
+		default: [],
 	},
 });
 
 // Before User is saved
-userSchema.pre("save", async function(next){
+userSchema.pre("save", async function (next) {
 	try {
 		// If password hasn't changed
-		if(!this.isModified("password")){
+		if (!this.isModified("password")) {
 			// Skip
 			return next();
-		// Otherwise
+			// Otherwise
 		} else {
 			// Encrypt password using async brypt.hash, provide salt key of 10
 			let hashedPassword = await bcrypt.hash(this.password, 10);
@@ -46,21 +48,21 @@ userSchema.pre("save", async function(next){
 			// Carry on
 			return next();
 		}
-	// Catch & pass on errors
-	} catch(err) {
+		// Catch & pass on errors
+	} catch (err) {
 		return next(err);
 	}
 });
 
 // Add method to schema for password checking
-userSchema.methods.comparePassword = async function(candidatePassword, next){
+userSchema.methods.comparePassword = async function (candidatePassword, next) {
 	try {
 		// Compare submitted & stored passwords using async bcrypt.compare
 		let isMatch = await bcrypt.compare(candidatePassword, this.password);
 		// Return boolean
 		return isMatch;
-	// Catch & pass on errors
-	} catch(err) {
+		// Catch & pass on errors
+	} catch (err) {
 		return next(err);
 	}
 };

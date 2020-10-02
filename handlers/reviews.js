@@ -1,6 +1,6 @@
 const db = require("../models");
 
-exports.createReview = async function(req,res,next){
+exports.createReview = async function (req, res, next) {
 	try {
 		// create Review with supplied data
 		let review = await db.Review.create({
@@ -8,7 +8,7 @@ exports.createReview = async function(req,res,next){
 			score: req.body.score,
 			content: req.body.content,
 			user: req.params.id,
-			product: req.params.product
+			product: req.params.product,
 		});
 
 		// Find author by id
@@ -24,30 +24,30 @@ exports.createReview = async function(req,res,next){
 		foundProduct.reviews.push(review.id);
 		// Wait for db to save
 		await foundProduct.save();
-		
+
 		// Add username + prod to review response to save re-looking up
 		let foundReview = await db.Review.findById(review._id)
-		.populate("user", {username: true})
-		.populate("product", {name: true});
+			.populate("user", { username: true })
+			.populate("product", { name: true });
 
 		// Reply with new review
 		return res.status(200).json(foundReview);
-	// Catch errors
-	} catch(err) {
+		// Catch errors
+	} catch (err) {
 		return next(err);
 	}
 };
 
-exports.getReview = async function(req,res,next){
+exports.getReview = async function (req, res, next) {
 	try {
 		let review = await db.Review.find(req.params.review_id);
 		return res.status(200).json(review);
-	} catch(err) {
+	} catch (err) {
 		return next(err);
 	}
 };
 
-exports.deleteReview = async function(req,res,next){
+exports.deleteReview = async function (req, res, next) {
 	try {
 		// Find review to delete
 		let foundReview = await db.Review.find(req.params.review_id);
@@ -56,7 +56,7 @@ exports.deleteReview = async function(req,res,next){
 		await foundReview.remove();
 		// Return removed review
 		return res.status(200).json(foundReview);
-	} catch(err) {
+	} catch (err) {
 		return next(err);
 	}
 };

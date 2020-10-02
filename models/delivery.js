@@ -11,12 +11,12 @@ const deliverySchema = new mongoose.Schema({
 	},
 	description: {
 		type: String,
-		required: true
+		required: true,
 	},
 	speed: {
 		type: Number,
-		required: true
-	}
+		required: true,
+	},
 });
 
 const Delivery = mongoose.model("Delivery", deliverySchema);

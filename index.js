@@ -19,7 +19,7 @@ const { loginRequired, ensureCorrectUser } = require("./middleware/auth");
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // ===================Auth Routes===================
 
@@ -33,8 +33,8 @@ app.use(
 	"/api/users/:id/reviews",
 	loginRequired,
 	ensureCorrectUser,
-	 reviewRoutes
- );
+	reviewRoutes
+);
 
 // =================Product Routes=================
 
@@ -63,7 +63,7 @@ app.use("/api/users", userRoutes);
 
 // =================Error Handlers=================
 
-app.use((req,res,next)=>{
+app.use((req, res, next) => {
 	let err = new Error("Not Found");
 	err.status = 404;
 	next(err);
@@ -71,12 +71,11 @@ app.use((req,res,next)=>{
 
 app.use(errorHandler);
 
-
 // ===================Start App===================
 
 // const seedDB = require("./seeds");
 // seedDB();
 
-app.listen(PORT, function(){
+app.listen(PORT, function () {
 	console.log(`Server running on port ${PORT}`);
 });

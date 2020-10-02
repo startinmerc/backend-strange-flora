@@ -5,7 +5,7 @@ exports.signin = async function (req, res, next) {
 	try {
 		// Find user by email from req.body
 		let user = await db.User.findOne({
-			email: req.body.email
+			email: req.body.email,
 		});
 		// Deconstruct user data to variables
 		let { id, username, cart, wish } = user;
@@ -14,10 +14,12 @@ exports.signin = async function (req, res, next) {
 		// If password correct
 		if (isMatch) {
 			// Create JSON web token for user
-			let token = jwt.sign({
-				id,
-				username
-			}, process.env.SECRET_KEY
+			let token = jwt.sign(
+				{
+					id,
+					username,
+				},
+				process.env.SECRET_KEY
 			);
 			// Return user data + auth token
 			return res.status(200).json({
@@ -25,20 +27,20 @@ exports.signin = async function (req, res, next) {
 				username,
 				cart,
 				wish,
-				token
+				token,
 			});
 			// Catch errors
 		} else {
 			return next({
 				status: 400,
-				message: "Invalid email/password"
-			})
+				message: "Invalid email/password",
+			});
 		}
 		// Catch errors
 	} catch (err) {
 		return next({
 			status: 400,
-			message: "Invalid email/password"
+			message: "Invalid email/password",
 		});
 	}
 };
@@ -48,12 +50,12 @@ exports.signup = async function (req, res, next) {
 		// Create new User from req.body
 		let user = await db.User.create(req.body);
 		// Deconstruct user data to variables
-		let { id, username,  } = user;
+		let { id, username } = user;
 		// Create JSON web token for user
 		let token = jwt.sign(
 			{
 				id,
-				username
+				username,
 			},
 			process.env.SECRET_KEY
 		);
@@ -61,7 +63,7 @@ exports.signup = async function (req, res, next) {
 		return res.status(200).json({
 			id,
 			username,
-			token
+			token,
 		});
 		// Catch errors
 	} catch (err) {
@@ -72,7 +74,7 @@ exports.signup = async function (req, res, next) {
 		// Return error & status
 		return next({
 			status: 400,
-			message: err.message
+			message: err.message,
 		});
 	}
 };

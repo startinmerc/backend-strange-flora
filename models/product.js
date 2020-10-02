@@ -3,37 +3,39 @@ const mongoose = require("mongoose");
 const productSchema = new mongoose.Schema({
 	name: {
 		type: String,
-		required: true
+		required: true,
 	},
 	photos: {
 		type: Array,
-		required: true
+		required: true,
 	},
 	description: {
 		type: String,
-		required: true
+		required: true,
 	},
 	price: {
 		type: String,
-		required: true
+		required: true,
 	},
 	type: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "Category",
-		required: true
+		required: true,
 	},
 	stock: {
 		type: Number,
-		required: true
+		required: true,
 	},
-	reviews: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "Review"
-	}],
+	reviews: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Review",
+		},
+	],
 	featured: {
 		type: Boolean,
-		default: false
-	}
+		default: false,
+	},
 });
 
 const Product = mongoose.model("Product", productSchema);

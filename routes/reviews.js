@@ -1,7 +1,11 @@
 const express = require("express");
-const router = express.Router({mergeParams: true});
+const router = express.Router({ mergeParams: true });
 
-const { createReview, getReview, deleteReview } = require("../handlers/reviews");
+const {
+	createReview,
+	getReview,
+	deleteReview,
+} = require("../handlers/reviews");
 
 router.route("/").post(createReview);
 

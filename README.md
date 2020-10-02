@@ -8,12 +8,12 @@
 
 #### Backend API built on
 
-* Mongo
-* Mongoose
-* Express
-* BodyParser
-* CORS
-* Node
+- Mongo
+- Mongoose
+- Express
+- BodyParser
+- CORS
+- Node
 
 The backend API for Strange Flora, a React eCommerce site.
 API development is tested during development using Postman.
@@ -38,119 +38,119 @@ API development is tested during development using Postman.
 
 #### Init
 
-* Install base dependencies
-* Create `index`
+- Install base dependencies
+- Create `index`
 
 #### Basic Errors
 
-* Create error handler in index
-* Create `handlers/error` to format JSON errors
-* Use in app
+- Create error handler in index
+- Create `handlers/error` to format JSON errors
+- Use in app
 
 #### Model Schemas
 
-* Create `models/index`
-* Add all basic schemas based on frontend seeds
+- Create `models/index`
+- Add all basic schemas based on frontend seeds
 
 #### User Schema Auth
 
-* Add preSave bcrypt to encrypt password
-* Add comparePassword to check correct password
+- Add preSave bcrypt to encrypt password
+- Add comparePassword to check correct password
 
 #### Auth Handlers 1
 
-* Add .env
-* Async signup
-* Signup JWT
-* Handle validation error
-* Add signup route
+- Add .env
+- Async signup
+- Signup JWT
+- Handle validation error
+- Add signup route
 
 #### Auth Handlers 2
 
-* Add signin handler
-* Include in routes
+- Add signin handler
+- Include in routes
 
 #### Reviews
 
-* Link Users and Reviews
-* Include in `models/index`
-* Include in `index.js`
-* Add routes
+- Link Users and Reviews
+- Include in `models/index`
+- Include in `index.js`
+- Add routes
 
 #### Middleware 1
 
-* Add loginrequired function
-* Check header token for user logged in
+- Add loginrequired function
+- Check header token for user logged in
 
 #### Middleware 2
 
-* Add ensureCorrectUser function
-* check user id of request matches user logged in
-* Include middleware in app
-* Pass to reviews routes
+- Add ensureCorrectUser function
+- check user id of request matches user logged in
+- Include middleware in app
+- Pass to reviews routes
 
 #### Product
 
-* Post, GetAll handlers
-* Post, GetAll routes
+- Post, GetAll handlers
+- Post, GetAll routes
 
 #### Category
 
-* Post, GetAll handlers
-* Post, GetAll routes
+- Post, GetAll handlers
+- Post, GetAll routes
 
 #### landingSection
 
-* Post, GetAll handlers
-* Post, GetAll routes
+- Post, GetAll handlers
+- Post, GetAll routes
 
 #### Seed DB
 
-* Copy seed function from frontend
-* Convert to Mongoose population
-* Include in app
+- Copy seed function from frontend
+- Convert to Mongoose population
+- Include in app
 
 #### getCategoryProducts
 
-* Add route
-* Add handler to return products in specific category
+- Add route
+- Add handler to return products in specific category
 
 #### getDeliveries
 
-* Add delivery option model
-* Add route to get delivery options
-* Add handler to return array of name, price objects
+- Add delivery option model
+- Add route to get delivery options
+- Add handler to return array of name, price objects
 
 #### Type
 
-* Change type in Product to category id ref
-* Update category model to 'type' for clearer syntax
-* Populate product response type fields
-* Update seeds
-* Add type lookup to routes which require id/type conversion
+- Change type in Product to category id ref
+- Update category model to 'type' for clearer syntax
+- Populate product response type fields
+- Update seeds
+- Add type lookup to routes which require id/type conversion
 
 ### V2.0
 
 #### Live Heroku Prep
 
-* Add procfile
-* Change port listener
-* Add url for MongoDB
-* Add dotEnv for MongoDB ID
+- Add procfile
+- Change port listener
+- Add url for MongoDB
+- Add dotEnv for MongoDB ID
 
 #### Push Live
 
-* Add heroku app
-* Link to Github master branch
-* Push live
+- Add heroku app
+- Link to Github master branch
+- Push live
 
 #### getFeaturedProducts
 
-* Simplify function to add last objects to array instead of random
+- Simplify function to add last objects to array instead of random
 
 #### Implement Users
 
-* Add user handlers
-* Add user routes
-* Add personal wishlist & cart arrays to user model
-* Add deleteUser route for testing
+- Add user handlers
+- Add user routes
+- Add personal wishlist & cart arrays to user model
+- Add deleteUser route for testing

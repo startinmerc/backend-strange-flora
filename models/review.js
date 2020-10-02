@@ -1,35 +1,38 @@
 const mongoose = require("mongoose");
 const User = require("./user");
 
-const reviewSchema = new mongoose.Schema({
-	title: {
-		type: String,
-		required: true
+const reviewSchema = new mongoose.Schema(
+	{
+		title: {
+			type: String,
+			required: true,
+		},
+		score: {
+			type: Number,
+			required: true,
+			min: 1,
+			max: 5,
+		},
+		user: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "User",
+		},
+		product: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Product",
+		},
+		content: {
+			type: String,
+			required: true,
+		},
 	},
-	score: {
-		type: Number,
-		required: true,
-		min: 1,
-		max: 5
-	},
-	user: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "User"
-	},
-	product: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "Product"
-	},
-	content: {
-		type: String,
-		required: true
+	{
+		timestamps: true,
 	}
-}, {
-		timestamps: true
-});
+);
 
 // Remove review from user's reviews schema
-reviewSchema.pre("remove", async function(next){
+reviewSchema.pre("remove", async function (next) {
 	try {
 		// find user by Id
 		let user = await User.findById(this.user);
@@ -44,10 +47,10 @@ reviewSchema.pre("remove", async function(next){
 
 		// on you go
 		return next();
-	// Or catch error
-	} catch(err) {
+		// Or catch error
+	} catch (err) {
 		return next(err);
-	};
+	}
 });
 
 const Review = mongoose.model("Review", reviewSchema);

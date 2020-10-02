@@ -4,28 +4,28 @@ const landingSectionSchema = new mongoose.Schema({
 	dark: {
 		type: Boolean,
 		required: true,
-		default: false
+		default: false,
 	},
 	header: {
 		type: String,
-		required: true
+		required: true,
 	},
 	copy: {
 		type: String,
-		required: true
+		required: true,
 	},
 	image: {
 		type: String,
-		required: true
+		required: true,
 	},
 	links: {
 		type: Array,
-		required: true
+		required: true,
 	},
 	type: {
 		type: String,
-		required: true
-	}
+		required: true,
+	},
 });
 
 const LandingSection = mongoose.model("LandingSection", landingSectionSchema);
