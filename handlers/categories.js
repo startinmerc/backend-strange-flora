@@ -50,3 +50,23 @@ exports.getCategoryProducts = async function (req, res, next) {
 		return next(err);
 	}
 };
+
+exports.getNav = async function (req, res, next) {
+	try {
+		const cats = await db.Category.find().sort({ _id: 1 });
+		const prodProms = cats.map(async (c) => {
+			let p = await db.Product.find({ type: c._id }).populate("type");
+			// Filter by featured
+			let featured = p.filter((p) => p.featured === true);
+			// Fill array with required number of products to make 2
+			featured.push(...p.slice(-2 + featured.length));
+			// Return array of featured products with 200 OK status
+			return featured;
+		});
+		Promise.all(prodProms).then((data) => {
+			res.status(200).json([cats, data]);
+		});
+	} catch (error) {
+		return next(error);
+	}
+};
