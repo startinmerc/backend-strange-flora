@@ -8,7 +8,7 @@ exports.createReview = async function (req, res, next) {
 			score: req.body.score,
 			content: req.body.content,
 			user: req.params.id,
-			product: req.params.product,
+			product: req.body.product,
 		});
 
 		// Find author by id
@@ -19,7 +19,7 @@ exports.createReview = async function (req, res, next) {
 		await foundUser.save();
 
 		// Find product by id
-		let foundProduct = await db.Product.findById(req.params.product);
+		let foundProduct = await db.Product.findById(req.body.product);
 		// Add review to author's reviews array
 		foundProduct.reviews.push(review.id);
 		// Wait for db to save
@@ -40,7 +40,7 @@ exports.createReview = async function (req, res, next) {
 
 exports.getReview = async function (req, res, next) {
 	try {
-		let review = await db.Review.find(req.params.review_id);
+		let review = await db.Review.findById(req.params.review_id);
 		return res.status(200).json(review);
 	} catch (err) {
 		return next(err);
@@ -50,7 +50,7 @@ exports.getReview = async function (req, res, next) {
 exports.deleteReview = async function (req, res, next) {
 	try {
 		// Find review to delete
-		let foundReview = await db.Review.find(req.params.review_id);
+		let foundReview = await db.Review.findById(req.params.review_id);
 		// Remove review
 		// |- not findByIdAndRemove as won't trigger pre-hook
 		await foundReview.remove();
