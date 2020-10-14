@@ -40,7 +40,7 @@ exports.createReview = async function (req, res, next) {
 
 exports.getReview = async function (req, res, next) {
 	try {
-		let review = await db.Review.findById(req.params.review_id);
+		let review = await db.Review.findById(req.params.review_id).populate("user", "username");
 		return res.status(200).json(review);
 	} catch (err) {
 		return next(err);
