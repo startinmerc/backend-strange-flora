@@ -34,9 +34,14 @@ exports.getAllProducts = async function (req, res, next) {
 
 exports.getProduct = async function (req, res, next) {
 	try {
-		let product = await db.Product.findById(req.params.product_id).populate(
-			"type"
-		).populate("reviews");
+		let product = await db.Product.findById(req.params.product_id)
+			.populate("type")
+			// Nested populate to get review author username
+			.populate({
+				path: "reviews",
+				populate: { path: "user", select: "username" },
+			});
+
 		return res.status(200).json(product);
 	} catch (err) {
 		// If supplied id isn't a valid mongoose id
